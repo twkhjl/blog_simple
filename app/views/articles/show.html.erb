@@ -14,11 +14,19 @@
 
       <br><br>
       
-      <h4>comments:</h4>
+      <h4>all comments:</h4>
       <% @article.comments.each do |comment| %>
-      
+
+        <h5>commenter:</h5>
         <div><%=comment.commenter%></div>
+        <h5>comment:</h5>
         <div><%=comment.body%></div>
+        <%= link_to  "delete this comment", 
+        [comment.article,comment],
+        method: :delete,
+        data:{confirm:'confirm?'},
+        :class => "btn btn-outline-secondary"%>
+        <br><br>
       <% end %>
       
       <br><br>
