@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="text-center">POST DETAIL</h2>
+      <br>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h3>title:</h3>
+      <div> <%=@article.title%></div>
+
+      <h3>text content:</h3>
+      <div><%=@article.text%></div>
+
+      <br><br>
+      
+      <h4>comments:</h4>
+      <% @article.comments.each do |comment| %>
+      
+        <div><%=comment.commenter%></div>
+        <div><%=comment.body%></div>
+      <% end %>
+      
+      <br><br>
+      
+      <h4>add new comment</h4>
+      <%= form_for ([@article,@article.comments.build]) do |f| %>
+
+        <div class="form-group">
+            <%= f.label :commenter, "your name:" %>
+            <%= f.text_field :commenter ,{:class => "form-control"}%>
+        </div>
+        <div class="form-group">
+            <%= f.label :body, "your comment:" %>
+            <%= f.text_area :body ,:class => "form-control"%>
+        </div>
+        <%= f.submit "add comment" ,:class => "btn btn-outline-secondary"%>
+      <% end %>
+
+
+      <br>
+      <br>
+      <br>
+
+      <%= link_to  "back", articles_path,{:class => "btn btn-secondary"} %>
+      <%= link_to  "edit", edit_article_path(@article),{:class => "btn btn-outline-dark"} %>
+      <br>
+      <br>
+      <br>
+
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>

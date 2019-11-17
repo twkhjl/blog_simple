@@ -1,0 +1,39 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    <div id="notice"></div>
+    <h1>My BLOG</h1>
+    <%= link_to  "add new post", new_article_path %>
+    </div>
+    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+
+
+
+    <div class="col-sm-12">
+
+      <% if @articles.any? %>
+        <% @articles.each do |f| %>
+        <div>
+          <h4><%= f.title %></h4>
+          <p><%= f.text %></p>
+        </div>
+        <%= link_to  "detail", article_path(f) ,:class=>"btn btn-outline-secondary"%>
+        <%= link_to  "edit", edit_article_path(f) ,:class=>"btn btn-outline-secondary"%>
+        <%= link_to  "del", article_path(f),method: :delete,data:{ confirm: "confirm??"},class: "btn btn-outline-secondary"%>
+        <br>
+        <% end %>
+        
+      <% else %>
+        <div>nothing here....add some post!</div>
+      <% end %>
+
+      
+    </div>
+  </div>  
+
+</div>
+
+
+
